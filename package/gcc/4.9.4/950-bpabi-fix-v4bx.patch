@@ -1,0 +1,11 @@
+--- a/gcc/config/arm/bpabi.h	2016-09-13 10:00:24.276725652 +0300
++++ b/gcc/config/arm/bpabi.h	2016-09-13 09:57:48.876563645 +0300
+@@ -57,7 +58,7 @@
+ #define TARGET_LIB_INT_CMP_BIASED !TARGET_BPABI
+ 
+ #define TARGET_FIX_V4BX_SPEC " %{mcpu=arm8|mcpu=arm810|mcpu=strongarm*"\
+-  "|march=armv4|mcpu=fa526|mcpu=fa626:--fix-v4bx}"
++  "|march=armv4|march=armv2a|mcpu=fa526|mcpu=fa626:--fix-v4bx}"
+ 
+ #if TARGET_BIG_ENDIAN_DEFAULT
+ #define BE8_LINK_SPEC \

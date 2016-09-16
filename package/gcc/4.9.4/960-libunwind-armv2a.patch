@@ -1,0 +1,28 @@
+--- a/libgcc/config/arm/libunwind.S	2014-01-03 02:25:22.000000000 +0400
++++ b/libgcc/config/arm/libunwind.S	2016-09-13 10:16:10.014491159 +0300
+@@ -292,21 +292,25 @@
+ 	RET
+ 
+ ARM_FUNC_START gnu_Unwind_Restore_WMMXC
++#if (__ARM_ARCH__ >= 4)
+ 	/* Use the generic coprocessor form so that gas doesn't complain
+ 	   on non-iWMMXt targets.  */
+ 	ldc2  p1, cr8, [r0], #4 /* wldrw wcgr0, [r0], #4 */
+ 	ldc2  p1, cr9, [r0], #4 /* wldrw wcgr1, [r0], #4 */
+ 	ldc2  p1, cr10, [r0], #4 /* wldrw wcgr2, [r0], #4 */
+ 	ldc2  p1, cr11, [r0], #4 /* wldrw wcgr3, [r0], #4 */
++#endif
+ 	RET
+ 
+ ARM_FUNC_START gnu_Unwind_Save_WMMXC
++#if (__ARM_ARCH__ >= 4)
+ 	/* Use the generic coprocessor form so that gas doesn't complain
+ 	   on non-iWMMXt targets.  */
+ 	stc2  p1, cr8, [r0], #4 /* wstrw wcgr0, [r0], #4 */
+ 	stc2  p1, cr9, [r0], #4 /* wstrw wcgr1, [r0], #4 */
+ 	stc2  p1, cr10, [r0], #4 /* wstrw wcgr2, [r0], #4 */
+ 	stc2  p1, cr11, [r0], #4 /* wstrw wcgr3, [r0], #4 */
++#endif
+ 	RET
+ 
+ /* Wrappers to save core registers, then call the real routine.   */

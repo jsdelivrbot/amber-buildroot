@@ -1,0 +1,20 @@
+--- a/libgcc/Makefile.in	2016-09-13 12:49:18.432388140 +0300
++++ b/libgcc/Makefile.in	2016-09-13 11:55:59.770038929 +0300
+@@ -228,7 +228,7 @@
+ LIBGCC2_DEBUG_CFLAGS = -g
+ LIBGCC2_CFLAGS = -O2 $(LIBGCC2_INCLUDES) $(GCC_CFLAGS) $(HOST_LIBGCC2_CFLAGS) \
+ 		 $(LIBGCC2_DEBUG_CFLAGS) -DIN_LIBGCC2 \
+-		 -fbuilding-libgcc -fno-stack-protector \
++		 -fbuilding-libgcc -fno-stack-protector -mno-thumb-interwork \
+ 		 $(INHIBIT_LIBC_CFLAGS)
+ 
+ # Additional options to use when compiling libgcc2.a.
+@@ -283,7 +283,7 @@
+ CRTSTUFF_CFLAGS = -O2 $(GCC_CFLAGS) $(INCLUDES) $(MULTILIB_CFLAGS) -g0 \
+   -finhibit-size-directive -fno-inline -fno-exceptions \
+   -fno-zero-initialized-in-bss -fno-toplevel-reorder -fno-tree-vectorize \
+-  -fno-stack-protector \
++  -fno-stack-protector -mno-thumb-interwork \
+   $(INHIBIT_LIBC_CFLAGS)
+ 
+ # Extra flags to use when compiling crt{begin,end}.o.
